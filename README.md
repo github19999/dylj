@@ -32,7 +32,7 @@
 ### 一键安装
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/github19999/dylj/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/github19999/Odylj/main/install.sh)
 ```
 
 安装完成后即可直接使用命令：
