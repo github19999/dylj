@@ -143,7 +143,6 @@ parse_inbounds() {
 
             local link="vless://${uuid}@${addr}:${port}?${params}#${tag_encoded}"
             links+=("$link")
-            log_link "$link"
 
         # ── VMESS ───────────────────────────────────────────
         elif [[ "$type" == "vmess" ]]; then
@@ -174,7 +173,6 @@ print(base64.urlsafe_b64encode(json.dumps(obj).encode()).decode().rstrip('='))
 ")
             local link="vmess://${vmess_obj}"
             links+=("$link")
-            log_link "$link"
 
         # ── TROJAN ──────────────────────────────────────────
         elif [[ "$type" == "trojan" ]]; then
@@ -193,7 +191,6 @@ print(base64.urlsafe_b64encode(json.dumps(obj).encode()).decode().rstrip('='))
             [[ "$network" == "ws" ]] && params+="&path=$(urlencode_component "$path")"
             local link="trojan://$(urlencode_component "$password")@${addr}:${port}?${params}#${tag_encoded}"
             links+=("$link")
-            log_link "$link"
 
         # ── SHADOWSOCKS ─────────────────────────────────────
         elif [[ "$type" == "shadowsocks" ]]; then
@@ -210,7 +207,6 @@ print(base64.urlsafe_b64encode(json.dumps(obj).encode()).decode().rstrip('='))
 
             local link="ss://${userinfo}@${addr}:${port}?#${tag_encoded}"
             links+=("$link")
-            log_link "$link"
 
         # ── HYSTERIA2 ───────────────────────────────────────
         elif [[ "$type" == "hysteria2" ]]; then
@@ -231,7 +227,6 @@ print(base64.urlsafe_b64encode(json.dumps(obj).encode()).decode().rstrip('='))
 
             local link="hysteria2://$(urlencode_component "$password")@${addr}:${port}?${params}#${tag_encoded}"
             links+=("$link")
-            log_link "$link"
 
         # ── TUIC ────────────────────────────────────────────
         elif [[ "$type" == "tuic" ]]; then
@@ -249,7 +244,6 @@ print(base64.urlsafe_b64encode(json.dumps(obj).encode()).decode().rstrip('='))
             local params="sni=$sni&congestion_control=$congestion&alpn=h3&udp_relay_mode=native"
             local link="tuic://${uuid}:$(urlencode_component "${password}")@${addr}:${port}?${params}#${tag_encoded}"
             links+=("$link")
-            log_link "$link"
 
         # ── ANYTLS ──────────────────────────────────────────
         elif [[ "$type" == "anytls" ]]; then
@@ -263,7 +257,6 @@ print(base64.urlsafe_b64encode(json.dumps(obj).encode()).decode().rstrip('='))
             local params="security=tls&sni=$sni&type=tcp"
             local link="anytls://$(urlencode_component "$password")@${addr}:${port}?${params}#${tag_encoded}"
             links+=("$link")
-            log_link "$link"
 
         # ── NAIVE ────────────────────────────────────────────
         elif [[ "$type" == "naive" ]]; then
@@ -277,7 +270,6 @@ print(base64.urlsafe_b64encode(json.dumps(obj).encode()).decode().rstrip('='))
 
             local link="naive+https://$(urlencode_component "$username"):$(urlencode_component "$password")@${addr}:${port}?padding=true#${tag_encoded}"
             links+=("$link")
-            log_link "$link"
 
         # ── SHADOWTLS ────────────────────────────────────────
         elif [[ "$type" == "shadowtls" ]]; then
